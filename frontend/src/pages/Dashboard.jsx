@@ -15,8 +15,8 @@ const Dashboard = () => {
   const fetchItems = async () => {
     try {
       const endpoint = searchQuery 
-        ? `http://localhost:5000/api/items/search?name=${searchQuery}`
-        : 'http://localhost:5000/api/items';
+        ? `http://13.232.95.102:3000/api/items/search?name=${searchQuery}`
+        : 'http://13.232.95.102:3000/api/items';
       const res = await axios.get(endpoint);
       setItems(res.data);
     } catch (err) {
@@ -32,10 +32,10 @@ const Dashboard = () => {
     try {
       if (itemId) {
         // Update
-        await axios.put(`http://localhost:5000/api/items/${itemId}`, formData);
+        await axios.put(`http://13.232.95.102:3000/api/items/${itemId}`, formData);
       } else {
         // Create
-        await axios.post('http://localhost:5000/api/items', formData);
+        await axios.post('http://13.232.95.102:3000/api/items', formData);
       }
       setIsFormOpen(false);
       setEditingItem(null);
@@ -56,7 +56,7 @@ const Dashboard = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this item?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/items/${id}`);
+        await axios.delete(`http://13.232.95.102:3000/api/items/${id}`);
         fetchItems();
       } catch (err) {
         console.error('Error deleting item', err);
